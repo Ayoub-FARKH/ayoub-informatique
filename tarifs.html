@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tarifs – Services Informatique Ayoub | Prix transparents</title>
+  <meta name="description" content="Tarifs simples et transparents: création sites web, montage PC, récupération données, maintenance. Cliquez sur chaque service pour voir les prix détaillés." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-nav glass" role="navigation" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-brand">
+        <a href="index.html#accueil" class="brand">
+          <div class="logo pulse">IT</div>
+          <span class="brand-name text-gradient">Ayoub</span>
+        </a>
+      </div>
+      <ul class="nav-menu" id="nav-menu" role="menubar">
+        <li role="none"><a href="index.html#accueil" role="menuitem" class="nav-link">Accueil</a></li>
+        <li role="none"><a href="tarifs.html" role="menuitem" class="nav-link" aria-current="page">Tarifs</a></li>
+        <li role="none"><a href="services/creation-site.html" role="menuitem" class="nav-link">Sites Web</a></li>
+        <li role="none"><a href="index.html#contact" role="menuitem" class="nav-link">Contact</a></li>
+        <li role="none"><a href="mentions-legales.html" role="menuitem" class="nav-link">Mentions légales</a></li>
+      </ul>
+
+      <!-- Toggle thème -->
+      <div class="theme-controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container">
+      <div class="hero-section">
+        <h1 class="text-gradient">Tarifs – Services Informatique</h1>
+        <p class="hero-subtitle">Prix transparents, devis gratuits</p>
+        <p class="hero-description">
+          Cliquez sur chaque service pour découvrir les tarifs détaillés et les options disponibles.
+        </p>
+      </div>
+
+      <!-- 4 Services Principaux -->
+      <section class="main-services" id="services">
+        <div class="services-grid">
+          <!-- Création de sites web -->
+          <article class="service-card"
+                   onclick="toggleServiceDetails('web')"
+                   tabindex="0"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="web-details"
+                   aria-label="Création de Sites Internet - Cliquez pour voir les tarifs détaillés">
+            <div class="service-icon" aria-hidden="true">🌐</div>
+            <h3>Création de Sites Internet</h3>
+            <p class="service-description">Sites vitrines, e-commerce et applications web sur mesure</p>
+            <div class="service-price">
+              <span class="starting-from">À partir de</span>
+              <span class="price">750€</span>
+            </div>
+            <div class="service-features">
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Design responsive</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>SEO optimisé</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Hébergement inclus</span>
+              </div>
+            </div>
+            <div class="service-toggle">
+              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-text">Cliquez pour voir les tarifs détaillés</span>
+            </div>
+          </article>
+
+          <!-- Maintenance et Hébergement -->
+          <article class="service-card"
+                   onclick="toggleServiceDetails('maintenance')"
+                   tabindex="0"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="maintenance-details"
+                   aria-label="Maintenance et Hébergement - Cliquez pour voir les tarifs détaillés">
+            <div class="service-icon" aria-hidden="true">🔧</div>
+            <h3>Maintenance & Hébergement</h3>
+            <p class="service-description">Maintenance préventive, interventions et solutions d'hébergement</p>
+            <div class="service-price">
+              <span class="starting-from">À partir de</span>
+              <span class="price">40€</span>
+            </div>
+            <div class="service-features">
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Maintenance préventive</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Intervention à domicile</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Hébergement web</span>
+              </div>
+            </div>
+            <div class="service-toggle">
+              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-text">Cliquez pour voir les tarifs détaillés</span>
+            </div>
+          </article>
+
+          <!-- Montage PC -->
+          <article class="service-card"
+                   onclick="toggleServiceDetails('pc')"
+                   tabindex="0"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="pc-details"
+                   aria-label="Montage PC Sur Mesure - Cliquez pour voir les tarifs détaillés">
+            <div class="service-icon" aria-hidden="true">🖥️</div>
+            <h3>Montage PC Sur Mesure</h3>
+            <p class="service-description">PC gaming, workstation et configurations personnalisées</p>
+            <div class="service-price">
+              <span class="starting-from">À partir de</span>
+              <span class="price">600€</span>
+            </div>
+            <div class="service-features">
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Configuration sur mesure</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Tests de performance</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Garantie 2 ans</span>
+              </div>
+            </div>
+            <div class="service-toggle">
+              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-text">Cliquez pour voir les tarifs détaillés</span>
+            </div>
+          </article>
+
+          <!-- Récupération de données -->
+          <article class="service-card"
+                   onclick="toggleServiceDetails('recovery')"
+                   tabindex="0"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="recovery-details"
+                   aria-label="Récupération de Données - Cliquez pour voir les tarifs détaillés">
+            <div class="service-icon" aria-hidden="true">💾</div>
+            <h3>Récupération de Données</h3>
+            <p class="service-description">Récupération professionnelle de données perdues ou supprimées</p>
+            <div class="service-price">
+              <span class="starting-from">À partir de</span>
+              <span class="price">50€</span>
+            </div>
+            <div class="service-features">
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Diagnostic gratuit</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Tous supports</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✅</span>
+                <span>Service urgent</span>
+              </div>
+            </div>
+            <div class="service-toggle">
+              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-text">Cliquez pour voir les tarifs détaillés</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Détails Création de sites web -->
+      <section id="web-details" class="service-details" style="display: none;">
+        <h2>🌐 Création de Sites Internet - Tarifs Détaillés</h2>
+        <p class="section-description">
+          Tarifs établis après étude de marché (freelances français similaires, plateformes comme Codeur.com, 2024)
+        </p>
+
+        <div class="pricing-grid">
+          <!-- Sites Vitrines -->
+          <article class="pricing-card featured">
+            <div class="pricing-badge">Plus populaire</div>
+            <div class="card-icon">🌐</div>
+            <h3>Site Vitrine</h3>
+            <p class="pricing-description">Présentation professionnelle de votre activité</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Design responsive moderne</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>SEO optimisé</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Formulaire de contact</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Galerie photos/portfolio</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Hébergement 1 an inclus</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Maintenance 3 mois</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Standard</h4>
+                <div class="price">
+                  <span class="original-price">900€</span>
+                  <span class="final-price">750€</span>
+                </div>
+                <p class="plan-description">5-7 pages, délai 10-15 jours</p>
+              </div>
+
+              <div class="plan featured">
+                <h4>Premium</h4>
+                <div class="price">
+                  <span class="original-price">1400€</span>
+                  <span class="final-price">1100€</span>
+                </div>
+                <p class="plan-description">10-15 pages, délai 7-10 jours</p>
+              </div>
+
+              <div class="plan">
+                <h4>Express</h4>
+                <div class="price">
+                  <span class="final-price">1400€</span>
+                </div>
+                <p class="plan-description">5-7 pages, délai 3-5 jours</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sites E-commerce -->
+          <article class="pricing-card">
+            <div class="card-icon">🛒</div>
+            <h3>Boutique E-commerce</h3>
+            <p class="pricing-description">Site de vente en ligne complet</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Design responsive</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Stripe/PayPal intégrés</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Gestion du stock</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Dashboard administration</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Livraison et facturation</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>SEO e-commerce</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Petite Boutique</h4>
+                <div class="price">
+                  <span class="original-price">2500€</span>
+                  <span class="final-price">2000€</span>
+                </div>
+                <p class="plan-description">Jusqu'à 50 produits</p>
+              </div>
+
+              <div class="plan">
+                <h4>Moyenne Boutique</h4>
+                <div class="price">
+                  <span class="original-price">4000€</span>
+                  <span class="final-price">3200€</span>
+                </div>
+                <p class="plan-description">Jusqu'à 200 produits</p>
+              </div>
+
+              <div class="plan">
+                <h4>Grande Boutique</h4>
+                <div class="price">
+                  <span class="final-price">Sur devis</span>
+                </div>
+                <p class="plan-description">Plus de 200 produits</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Applications Web -->
+          <article class="pricing-card">
+            <div class="card-icon">⚡</div>
+            <h3>Applications Web</h3>
+            <p class="pricing-description">Solutions web personnalisées</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Développement sur mesure</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Base de données intégrée</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>API RESTful</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Interface administrateur</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Authentification sécurisée</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Tests automatisés</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Application Simple</h4>
+                <div class="price">
+                  <span class="original-price">3000€</span>
+                  <span class="final-price">2500€</span>
+                </div>
+                <p class="plan-description">CRUD basique</p>
+              </div>
+
+              <div class="plan">
+                <h4>Application Complexe</h4>
+                <div class="price">
+                  <span class="original-price">8000€</span>
+                  <span class="final-price">6500€</span>
+                </div>
+                <p class="plan-description">Multi-utilisateurs</p>
+              </div>
+
+              <div class="plan">
+                <h4>Plateforme Avancée</h4>
+                <div class="price">
+                  <span class="final-price">Sur devis</span>
+                </div>
+                <p class="plan-description">Fonctionnalités complexes</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Détails Maintenance et Hébergement -->
+      <section id="maintenance-details" class="service-details" style="display: none;">
+        <h2>🔧 Maintenance & Hébergement - Tarifs Détaillés</h2>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="card-icon">📋</div>
+            <h3>Maintenance Préventive</h3>
+            <p class="pricing-description">Surveillance et maintenance continue</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Forfait Mensuel</h4>
+                <div class="price">
+                  <span class="final-price">80€/mois</span>
+                </div>
+                <p class="plan-description">Maintenance préventive</p>
+              </div>
+
+              <div class="plan">
+                <h4>Forfait Annuel</h4>
+                <div class="price">
+                  <span class="original-price">1200€</span>
+                  <span class="final-price">800€/an</span>
+                </div>
+                <p class="plan-description">2 mois gratuits</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">🏠</div>
+            <h3>Intervention à Domicile</h3>
+            <p class="pricing-description">Maintenance et réparation sur site</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Diagnostic</h4>
+                <div class="price">
+                  <span class="final-price">40€</span>
+                </div>
+                <p class="plan-description">Gratuit si intervention</p>
+              </div>
+
+              <div class="plan">
+                <h4>Intervention Standard</h4>
+                <div class="price">
+                  <span class="final-price">60€/heure</span>
+                </div>
+                <p class="plan-description">Maintenance classique</p>
+              </div>
+
+              <div class="plan">
+                <h4>Forfait Complet</h4>
+                <div class="price">
+                  <span class="final-price">200€</span>
+                </div>
+                <p class="plan-description">Nettoyage + optimisation</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">☁️</div>
+            <h3>Hébergement Web</h3>
+            <p class="pricing-description">Solutions d'hébergement professionnelles</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Mutualisé</h4>
+                <div class="price">
+                  <span class="final-price">50€/an</span>
+                </div>
+                <p class="plan-description">Idéal sites vitrines</p>
+              </div>
+
+              <div class="plan">
+                <h4>VPS Basique</h4>
+                <div class="price">
+                  <span class="final-price">300€/an</span>
+                </div>
+                <p class="plan-description">Performance dédiée</p>
+              </div>
+
+              <div class="plan">
+                <h4>VPS Avancé</h4>
+                <div class="price">
+                  <span class="final-price">600€/an</span>
+                </div>
+                <p class="plan-description">Haute performance</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Détails Montage PC -->
+      <section id="pc-details" class="service-details" style="display: none;">
+        <h2>🖥️ Montage PC Sur Mesure - Tarifs Détaillés</h2>
+        <p class="section-description">
+          Tarifs établis selon configurations (étude marché 2024, comparaison avec LDLC, Materiel.net)
+        </p>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="card-icon">💼</div>
+            <h3>Bureau/Étudiant</h3>
+            <p class="pricing-description">PC pour travail et études</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Windows 11 Pro</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Office 2021 inclus</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Configuration équilibrée</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Garantie 2 ans</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Entrée de gamme</h4>
+                <div class="price">
+                  <span class="original-price">700€</span>
+                  <span class="final-price">600€</span>
+                </div>
+                <p class="plan-description">i3/8GB/SSD 512GB</p>
+              </div>
+
+              <div class="plan">
+                <h4>Milieu de gamme</h4>
+                <div class="price">
+                  <span class="original-price">1000€</span>
+                  <span class="final-price">850€</span>
+                </div>
+                <p class="plan-description">i5/16GB/SSD 1TB</p>
+              </div>
+
+              <div class="plan">
+                <h4>Haut de gamme</h4>
+                <div class="price">
+                  <span class="original-price">1500€</span>
+                  <span class="final-price">1300€</span>
+                </div>
+                <p class="plan-description">i7/32GB/SSD 2TB</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">🎮</div>
+            <h3>Gaming</h3>
+            <p class="pricing-description">PC gaming haute performance</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Carte graphique dédiée</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Refroidissement optimisé</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Éclairage RGB</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Tests de stabilité gaming</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Gaming 1080p</h4>
+                <div class="price">
+                  <span class="original-price">1200€</span>
+                  <span class="final-price">1000€</span>
+                </div>
+                <p class="plan-description">RTX 4060/i5/16GB</p>
+              </div>
+
+              <div class="plan">
+                <h4>Gaming 1440p</h4>
+                <div class="price">
+                  <span class="original-price">2000€</span>
+                  <span class="final-price">1700€</span>
+                </div>
+                <p class="plan-description">RTX 4070/i7/32GB</p>
+              </div>
+
+              <div class="plan">
+                <h4>Gaming 4K</h4>
+                <div class="price">
+                  <span class="original-price">3500€</span>
+                  <span class="final-price">3000€</span>
+                </div>
+                <p class="plan-description">RTX 4080/i9/64GB</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">🚀</div>
+            <h3>Workstation/Création</h3>
+            <p class="pricing-description">PC pour professionnels créatifs</p>
+
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Processeur haute performance</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>RAM optimisée création</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Stockage ultra-rapide</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span>Certification professionnelle</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Création 2D</h4>
+                <div class="price">
+                  <span class="original-price">1500€</span>
+                  <span class="final-price">1300€</span>
+                </div>
+                <p class="plan-description">Design/Photo</p>
+              </div>
+
+              <div class="plan">
+                <h4>Création 3D</h4>
+                <div class="price">
+                  <span class="original-price">2500€</span>
+                  <span class="final-price">2100€</span>
+                </div>
+                <p class="plan-description">Modélisation/Animation</p>
+              </div>
+
+              <div class="plan">
+                <h4>Station Avancée</h4>
+                <div class="price">
+                  <span class="final-price">Sur devis</span>
+                </div>
+                <p class="plan-description">Configuration spécifique</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Détails Récupération de données -->
+      <section id="recovery-details" class="service-details" style="display: none;">
+        <h2>💾 Récupération de Données - Tarifs Détaillés</h2>
+        <p class="section-description">
+          Tarifs selon complexité (étude marché récupération données professionnelle)
+        </p>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="card-icon">🔍</div>
+            <h3>Diagnostic</h3>
+            <p class="pricing-description">Évaluation de l'état du support</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Diagnostic Standard</h4>
+                <div class="price">
+                  <span class="final-price">50€</span>
+                </div>
+                <p class="plan-description">Analyse complète</p>
+              </div>
+
+              <div class="plan">
+                <h4>Diagnostic Urgent</h4>
+                <div class="price">
+                  <span class="final-price">80€</span>
+                </div>
+                <p class="plan-description">Sous 24h</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">📱</div>
+            <h3>Smartphones/Tablettes</h3>
+            <p class="pricing-description">Récupération données mobiles</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Récupération Simple</h4>
+                <div class="price">
+                  <span class="final-price">150€</span>
+                </div>
+                <p class="plan-description">Photos/contacts</p>
+              </div>
+
+              <div class="plan">
+                <h4>Récupération Complexe</h4>
+                <div class="price">
+                  <span class="final-price">300€</span>
+                </div>
+                <p class="plan-description">Données supprimées</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="card-icon">💽</div>
+            <h3>Disques Durs/SSD</h3>
+            <p class="pricing-description">Récupération professionnelle</p>
+
+            <div class="pricing-plans">
+              <div class="plan">
+                <h4>Logique Simple</h4>
+                <div class="price">
+                  <span class="final-price">200€</span>
+                </div>
+                <p class="plan-description">Suppression/formatage</p>
+              </div>
+
+              <div class="plan">
+                <h4>Matériel Léger</h4>
+                <div class="price">
+                  <span class="final-price">400€</span>
+                </div>
+                <p class="plan-description">Panne électronique</p>
+              </div>
+
+              <div class="plan">
+                <h4>Matériel Complexe</h4>
+                <div class="price">
+                  <span class="final-price">Sur devis</span>
+                </div>
+                <p class="plan-description">Salle blanche nécessaire</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Services additionnels -->
+      <section class="pricing-section">
+        <h2>⭐ Services Additionnels</h2>
+        <div class="additional-services">
+          <div class="service-item">
+            <h3>🚀 Livraison Express (tous services)</h3>
+            <p>Supplément pour traitement prioritaire</p>
+            <div class="price">
+              <span class="final-price">+150€</span>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <h3>📚 Formation Utilisateur</h3>
+            <p>Formation complète à l'utilisation de votre site/PC</p>
+            <div class="price">
+              <span class="final-price">100€/heure</span>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <h3>🔒 Sécurité Avancée</h3>
+            <p>Configuration sécurité renforcée et certificats</p>
+            <div class="price">
+              <span class="final-price">200€</span>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <h3>📊 Référencement SEO</h3>
+            <p>Optimisation complète pour les moteurs de recherche</p>
+            <div class="price">
+              <span class="final-price">300€</span>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <h3>🔄 Migration de Site</h3>
+            <p>Transfert sécurisé depuis autre hébergeur</p>
+            <div class="price">
+              <span class="final-price">150€</span>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <h3>📱 Support Prioritaire</h3>
+            <p>Support technique 7j/7 avec temps de réponse garanti</p>
+            <div class="price">
+              <span class="final-price">50€/mois</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conditions et garanties -->
+      <section class="conditions-section">
+        <h2>📋 Conditions & Garanties</h2>
+        <div class="conditions-grid">
+          <div class="condition-card">
+            <h3>💰 Devis Gratuit</h3>
+            <p>Tous les devis sont gratuits et sans engagement. Étude personnalisée de votre projet.</p>
+          </div>
+
+          <div class="condition-card">
+            <h3>⏰ Délais Respectés</h3>
+            <p>Engagement sur les délais annoncés avec pénalités en cas de retard injustifié.</p>
+          </div>
+
+          <div class="condition-card">
+            <h3>🔒 Garantie Standard</h3>
+            <p>Garantie de 6 mois sur tous les services (1 an pour le montage PC).</p>
+          </div>
+
+          <div class="condition-card">
+            <h3>📞 Support Inclus</h3>
+            <p>Support technique par email/téléphone pendant 30 jours après livraison.</p>
+          </div>
+
+          <div class="condition-card">
+            <h3>🔄 Pas de Frais Cachés</h3>
+            <p>Tarifs transparents, aucun supplément non annoncé sauf demande spécifique.</p>
+          </div>
+
+          <div class="condition-card">
+            <h3>🌍 Zone d'Intervention</h3>
+            <p>Interventions à domicile selon zone géographique. Livraison possible partout.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Étude de marché -->
+      <section class="market-study">
+        <h2>📊 Étude de Marché & Positionnement</h2>
+        <div class="study-content">
+          <p>
+            Ces tarifs sont établis après une <strong>étude approfondie du marché français 2024</strong>
+            des services informatique. Comparaison avec :
+          </p>
+
+          <ul class="market-comparison">
+            <li><strong>Plateformes freelance :</strong> Codeur.com, Malt.fr, Upwork</li>
+            <li><strong>Agences web :</strong> Tarifs moyens du marché (800€ - 3000€ pour sites vitrines)</li>
+            <li><strong>Constructeurs PC :</strong> LDLC, Materiel.net (configurations similaires)</li>
+            <li><strong>Services récupération :</strong> Sociétés spécialisées (200€ - 600€ selon complexité)</li>
+          </ul>
+
+          <div class="positioning">
+            <h3>🎯 Positionnement Tarifaire</h3>
+            <p>
+              <strong>Freelance compétitif :</strong> Tarifs 20-30% inférieurs aux agences traditionnelles
+              tout en maintenant une qualité professionnelle et un service personnalisé.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to action -->
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2>Prêt à démarrer votre projet ?</h2>
+          <p>Contactez-moi pour un devis personnalisé et gratuit. Étude de vos besoins et proposition sur mesure.</p>
+          <div class="cta-buttons">
+            <a class="btn btn-primary btn-glow" href="index.html#contact">
+              💬 Demander un devis gratuit
+            </a>
+            <a class="btn btn-outline" href="#services">
+              📋 Découvrir tous les services
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Ayoub</h3>
+          <p>Services informatique complets: création sites web, montage PC, récupération de données, maintenance, hébergement.</p>
+        </div>
+        <div>
+          <h4>Tarifs transparents</h4>
+          <p>Tous les tarifs sont établis après étude de marché. Devis gratuits, sans engagement, délais respectés.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="plain">
+            <li><a href="services/creation-site.html">Création sites web</a></li>
+            <li><a href="services/montage.html">Montage PC</a></li>
+            <li><a href="services/maintenance.html">Maintenance</a></li>
+            <li><a href="services/recuperation-donnees.html">Récupération données</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">© <span id="year"></span> Ayoub. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Backend et API -->
+  <script src="emailjs-config.js"></script>
+  <script src="api.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Fonctionnalité d'expansion des services -->
+  <script>
+    // Gestionnaire d'erreurs global
+    window.addEventListener('error', function(e) {
+      console.error('Erreur JavaScript:', e.error);
+    });
+
+    function toggleServiceDetails(serviceType, element = null) {
+      try {
+        // Masquer tous les détails de service
+        const allDetails = document.querySelectorAll('.service-details');
+        allDetails.forEach(detail => {
+          if (detail) {
+            detail.style.display = 'none';
+          }
+        });
+
+        // Réinitialiser tous les états aria-expanded
+        document.querySelectorAll('.service-card').forEach(card => {
+          if (card) {
+            card.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Afficher les détails du service sélectionné
+        const selectedDetails = document.getElementById(serviceType + '-details');
+        if (selectedDetails) {
+          const currentDisplay = window.getComputedStyle(selectedDetails).display;
+          if (currentDisplay === 'none') {
+            selectedDetails.style.display = 'block';
+
+            // Mettre à jour l'état aria-expanded de l'élément déclencheur
+            if (element) {
+              element.setAttribute('aria-expanded', 'true');
+            }
+
+            // Faire défiler vers la section avec un délai pour laisser le temps à l'affichage
+            setTimeout(() => {
+              selectedDetails.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, 100);
+          } else {
+            selectedDetails.style.display = 'none';
+            if (element) {
+              element.setAttribute('aria-expanded', 'false');
+            }
+          }
+        }
+
+        // Mettre à jour les icônes de toggle
+        updateToggleIcons();
+      } catch (error) {
+        console.error('Erreur dans toggleServiceDetails:', error);
+      }
+    }
+
+    function updateToggleIcons() {
+      try {
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+          if (!card) return;
+
+          const toggleIcon = card.querySelector('.toggle-icon');
+          if (!toggleIcon) return;
+
+          // Récupérer le service type de manière plus fiable
+          const onclickAttr = card.getAttribute('onclick');
+          if (!onclickAttr) return;
+
+          const serviceMatch = onclickAttr.match(/toggleServiceDetails\(['"]([^'"]+)['"]\)/);
+          if (!serviceMatch) return;
+
+          const serviceType = serviceMatch[1];
+          const detailsId = serviceType + '-details';
+          const details = document.getElementById(detailsId);
+
+          if (details) {
+            const isVisible = window.getComputedStyle(details).display !== 'none';
+            toggleIcon.textContent = isVisible ? '▲' : '▼';
+            toggleIcon.style.transform = isVisible ? 'rotate(180deg)' : 'rotate(0deg)';
+          }
+        });
+      } catch (error) {
+        console.error('Erreur dans updateToggleIcons:', error);
+      }
+    }
+
+    // Fermer les détails quand on clique en dehors
+    document.addEventListener('click', function(event) {
+      try {
+        const isServiceCard = event.target.closest('.service-card');
+        const isServiceDetails = event.target.closest('.service-details');
+
+        if (!isServiceCard && !isServiceDetails) {
+          const allDetails = document.querySelectorAll('.service-details');
+          allDetails.forEach(detail => {
+            if (detail) {
+              detail.style.display = 'none';
+            }
+          });
+          updateToggleIcons();
+        }
+      } catch (error) {
+        console.error('Erreur dans l\'event listener de fermeture:', error);
+      }
+    });
+
+    // Animation d'entrée pour les cartes de service
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        const serviceCards = document.querySelectorAll('.service-card');
+        if (serviceCards.length === 0) return;
+
+        serviceCards.forEach((card, index) => {
+          if (!card) return;
+
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+
+          setTimeout(() => {
+            if (card) {
+              card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }
+          }, index * 150); // Réduit le délai pour une animation plus rapide
+        });
+
+        // Ajouter la navigation au clavier
+        addKeyboardNavigation();
+
+        // Initialiser les icônes après le chargement
+        setTimeout(() => {
+          updateToggleIcons();
+        }, 100);
+      } catch (error) {
+        console.error('Erreur dans l\'animation d\'entrée:', error);
+      }
+    });
+
+    // Ajouter la navigation au clavier
+    function addKeyboardNavigation() {
+      try {
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        serviceCards.forEach((card, index) => {
+          if (!card) return;
+
+          card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const onclickAttr = card.getAttribute('onclick');
+              if (onclickAttr) {
+                const serviceMatch = onclickAttr.match(/toggleServiceDetails\(['"]([^'"]+)['"]\)/);
+                if (serviceMatch) {
+                  toggleServiceDetails(serviceMatch[1], card);
+                }
+              }
+            }
+
+            // Navigation avec les flèches
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+              e.preventDefault();
+              const nextIndex = (index + 1) % serviceCards.length;
+              serviceCards[nextIndex].focus();
+            }
+
+            if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+              e.preventDefault();
+              const prevIndex = index === 0 ? serviceCards.length - 1 : index - 1;
+              serviceCards[prevIndex].focus();
+            }
+          });
+        });
+      } catch (error) {
+        console.error('Erreur dans la navigation au clavier:', error);
+      }
+    }
+
+    // Gestionnaire pour le thème
+    function initTheme() {
+      try {
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+          themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+
+            // Mettre à jour l'icône
+            const themeIcon = themeToggle.querySelector('.theme-icon');
+            if (themeIcon) {
+              themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            }
+          });
+
+          // Charger le thème sauvegardé
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const themeIcon = themeToggle.querySelector('.theme-icon');
+            if (themeIcon) {
+              themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Erreur dans l\'initialisation du thème:', error);
+      }
+    }
+
+    // Initialiser le thème
+    document.addEventListener('DOMContentLoaded', initTheme);
+  </script>
+</body>
+</html>

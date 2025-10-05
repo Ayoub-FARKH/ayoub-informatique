@@ -1,0 +1,104 @@
+{
+  "name": "ayoub-services-informatique",
+  "version": "1.0.0",
+  "description": "Site web professionnel pour les services informatique d'Ayoub - Montage PC, récupération de données, maintenance",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "start:3001": "PORT=3001 node server.js",
+    "start:8080": "PORT=8080 node server.js",
+    "start:4000": "PORT=4000 node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js",
+    "build": "node build.js",
+    "build:prod": "node build.js",
+    "lint": "echo 'Linting temporairement désactivé'",
+    "validate": "echo 'Validation temporairement désactivée'",
+    "clean": "node -e \"console.log('Nettoyage manuel: supprimez les dossiers dist/ et temp/ si nécessaire')\"",
+    "deploy": "echo 'Déploiement manuel: voir README.md'",
+    "analyze": "echo 'Analyse manuelle: voir README.md'",
+    "security": "npm audit",
+    "backup": "node backup.js",
+    "setup": "echo 'Configuration terminée - utilisez npm start pour démarrer'"
+  },
+  "keywords": [
+    "informatique",
+    "montage-pc",
+    "recuperation-donnees",
+    "maintenance-ordinateur",
+    "services-it",
+    "reparation-pc",
+    "installation-windows"
+  ],
+  "author": "Ayoub <proayoubfarkh@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayoub-services-informatique/ayoub-services-informatique.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayoub-services-informatique/ayoub-services-informatique.github.io/issues"
+  },
+  "homepage": "https://ayoub-services-informatique.github.io",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "htmlhint": "^1.1.4",
+    "eslint": "^8.50.0",
+    "html-validate": "^8.0.0",
+    "lighthouse": "^11.0.0",
+    "gh-pages": "^6.0.0",
+    "workbox-cli": "^7.0.0",
+    "terser": "^5.20.0",
+    "clean-css-cli": "^5.6.0",
+    "html-minifier-terser": "^7.2.0",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.0",
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.0",
+    "ora": "^7.0.0",
+    "cli-progress": "^3.12.0",
+    "fs-extra": "^11.1.0",
+    "archiver": "^6.0.0",
+    "node-cron": "^3.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "helmet": "^7.0.0",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.3.0",
+    "cors": "^2.8.5"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "config": {
+    "development": {
+      "port": 3000,
+      "host": "localhost",
+      "https": false,
+      "openBrowser": true
+    },
+    "production": {
+      "port": 8080,
+      "host": "0.0.0.0",
+      "https": true,
+      "openBrowser": false
+    }
+  },
+  "liveServer.settings": {
+    "cleanUrls": false,
+    "noBrowser": false,
+    "wait": 1000,
+    "mount": [
+      ["/api", "./api"]
+    ]
+  }
+}
