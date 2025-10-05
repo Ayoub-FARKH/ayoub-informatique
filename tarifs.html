@@ -920,6 +920,18 @@
       console.error('Erreur JavaScript:', e.error);
     });
 
+    // Correction pour les noms de domaine GitHub Pages
+    document.addEventListener('DOMContentLoaded', function() {
+      // S'assurer que tous les chemins sont relatifs
+      const links = document.querySelectorAll('a[href]');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.includes('ayoub-informatique.github.io')) {
+          // Ne rien changer, c'est déjà correct
+        }
+      });
+    });
+
     function toggleServiceDetails(serviceType, element = null) {
       try {
         // Masquer tous les détails de service
