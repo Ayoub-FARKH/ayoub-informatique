@@ -1070,8 +1070,9 @@
           showNotification('Erreur EmailJS: ' + (emailjsError.text || emailjsError.message), 'error');
         }
 
-        // Fallback vers mailto sécurisé
-        return sendViaMailto(sanitizedData);
+        // ❌ Plus de fallback mailto - EmailJS uniquement
+        showNotification('Erreur: Impossible d\'envoyer l\'email. Vérifiez votre configuration EmailJS.', 'error');
+        return false;
 
       } catch (error) {
         console.error('Erreur formulaire:', error);
@@ -1080,41 +1081,7 @@
       }
     }
 
-    // Envoi sécurisé via mailto
-    function sendViaMailto(data) {
-      try {
-        const subject = `🔧 ${data.prestation || 'Service'} - ${data.nom} ${data.prenom}`.slice(0, 100);
-        const body = `🔔 NOUVEAU MESSAGE CLIENT
-
-👤 INFORMATIONS :
-Nom: ${data.nom}
-Prénom: ${data.prenom}
-Email: ${data.email}
-Téléphone: ${data.telephone}
-
-💼 SERVICE :
-${data.prestation}
-
-📝 MESSAGE :
-${data.message}
-
----
-✉️  Message envoyé depuis ayoub-informatique.netlify.app
-📅 ${data.date}
-        `.trim();
-
-        const mailtoUrl = `mailto:${EMAILJS_CONFIG.FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        window.location.href = mailtoUrl;
-        showNotification('Client email ouvert', 'success');
-        return true;
-
-      } catch (error) {
-        console.error('Erreur mailto:', error);
-        showNotification('Erreur lors de l\'ouverture du client email', 'error');
-        return false;
-      }
-    }
+    // ⚠️ Plus de mailto - EmailJS uniquement
 
     // Notifications sécurisées
     function showNotification(message, type = 'info') {

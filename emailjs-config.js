@@ -188,46 +188,7 @@ class EmailJSManager {
     }
   }
 
-  /**
-   * Envoi via mailto (fallback)
-   */
-  sendViaMailto(templateParams, options = {}) {
-    const { showSuccess = true, showError = true } = options;
-
-    try {
-      const subject = EMAILJS_CONFIG.MAILTO_TEMPLATES.contact.subject
-        .replace('{service}', templateParams.prestation || 'Service')
-        .replace('{nom}', templateParams.nom || '')
-        .replace('{prenom}', templateParams.prenom || '');
-
-      const body = EMAILJS_CONFIG.MAILTO_TEMPLATES.contact.body
-        .replace('{nom}', templateParams.nom || '')
-        .replace('{prenom}', templateParams.prenom || '')
-        .replace('{email}', templateParams.email || '')
-        .replace('{telephone}', templateParams.telephone || '')
-        .replace('{prestation}', templateParams.prestation || '')
-        .replace('{objet}', templateParams.objet || '')
-        .replace('{message}', templateParams.message || '');
-
-      const mailtoUrl = `mailto:${EMAILJS_CONFIG.FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      console.log('📬 Ouverture du client email...');
-      window.location.href = mailtoUrl;
-
-      if (showSuccess) {
-        this.showMessage('Client email ouvert avec succès', 'success');
-      }
-
-      return { success: true, method: 'mailto' };
-
-    } catch (error) {
-      console.error('❌ Erreur mailto:', error);
-      if (showError) {
-        this.showMessage('Erreur lors de l\'ouverture du client email', 'error');
-      }
-      return { success: false, method: 'mailto', error };
-    }
-  }
+  // ⚠️ Plus de mailto - EmailJS uniquement
 
   /**
    * Affiche un message à l'utilisateur
