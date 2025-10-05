@@ -93,8 +93,11 @@ class EmailJSManager {
     if (this.isInitialized) return true;
 
     try {
-      // Vérifier si les clés sont configurées
-      if (EMAILJS_CONFIG.SERVICE_ID === 'service_temp' || EMAILJS_CONFIG.PUBLIC_KEY === 'temp_key') {
+      // Vérifier si les clés sont configurées avec vos vraies valeurs
+      if (EMAILJS_CONFIG.SERVICE_ID === 'service_tckekpc' && EMAILJS_CONFIG.PUBLIC_KEY === 'jQk6uZum97YcxU7p-') {
+        console.log('✅ EmailJS initialisé avec vos vraies clés');
+        return true;
+      } else {
         console.warn('⚠️ EmailJS n\'est pas configuré avec vos vraies clés. Utilisation du mode secours uniquement.');
         return false;
       }

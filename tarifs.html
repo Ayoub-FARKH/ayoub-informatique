@@ -964,7 +964,10 @@
         }
 
         // Vérifier que les clés sont configurées avec vos vraies valeurs
-        if (EMAILJS_CONFIG.PUBLIC_KEY !== 'jQk6uZum97YcxU7p-') {
+        if (EMAILJS_CONFIG.PUBLIC_KEY === 'jQk6uZum97YcxU7p-') {
+          console.log('✅ EmailJS initialisé avec vos vraies clés');
+          return true;
+        } else {
           console.warn('⚠️ EmailJS n\'est pas configuré avec vos vraies clés. Mode secours activé.');
           return false;
         }
@@ -1039,7 +1042,7 @@
         // Tentative EmailJS avec vos vraies clés
         const emailjsInitialized = await initEmailJS();
 
-        if (emailjsInitialized && EMAILJS_CONFIG.PUBLIC_KEY === 'jQk6uZum97YcxU7p-') {
+        if (emailjsInitialized) {
           try {
             const result = await emailjs.send(
               EMAILJS_CONFIG.SERVICE_ID,
