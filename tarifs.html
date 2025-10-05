@@ -3,8 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Sécurité -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.emailjs.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+    font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+    img-src 'self' data: https:;
+    connect-src 'self' https://api.emailjs.com;
+    frame-ancestors 'none';
+    form-action 'self';
+  " />
+
   <title>Tarifs – Services Informatique Ayoub | Prix transparents</title>
   <meta name="description" content="Tarifs simples et transparents: création sites web, montage PC, récupération données, maintenance. Cliquez sur chaque service pour voir les prix détaillés." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Ayoub Informatique" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -913,12 +935,253 @@
   <script src="api.js"></script>
   <script src="script.js"></script>
 
+  <!-- Configuration EmailJS sécurisée -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <!-- Fonctionnalité d'expansion des services -->
   <script>
     // Gestionnaire d'erreurs global
     window.addEventListener('error', function(e) {
       console.error('Erreur JavaScript:', e.error);
     });
+
+    // Configuration EmailJS depuis variables d'environnement
+    const EMAILJS_CONFIG = {
+      SERVICE_ID: 'service_temp', // À CONFIGURER
+      TEMPLATE_ID: 'template_temp', // À CONFIGURER
+      PUBLIC_KEY: 'temp_key', // À CONFIGURER
+      FALLBACK_EMAIL: 'proayoubfarkh@gmail.com'
+    };
+
+    // Initialisation EmailJS sécurisée
+    async function initEmailJS() {
+      try {
+        // Charger la configuration depuis .env si disponible
+        if (window.ENV_CONFIG) {
+          EMAILJS_CONFIG.SERVICE_ID = window.ENV_CONFIG.SERVICE_ID || EMAILJS_CONFIG.SERVICE_ID;
+          EMAILJS_CONFIG.TEMPLATE_ID = window.ENV_CONFIG.TEMPLATE_ID || EMAILJS_CONFIG.TEMPLATE_ID;
+          EMAILJS_CONFIG.PUBLIC_KEY = window.ENV_CONFIG.PUBLIC_KEY || EMAILJS_CONFIG.PUBLIC_KEY;
+        }
+
+        // Vérifier que les clés sont configurées
+        if (EMAILJS_CONFIG.PUBLIC_KEY === 'temp_key') {
+          console.warn('⚠️ EmailJS n\'est pas configuré. Mode secours activé.');
+          return false;
+        }
+
+        // Initialiser EmailJS
+        await emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+        console.log('✅ EmailJS initialisé avec succès');
+        return true;
+      } catch (error) {
+        console.error('❌ Erreur EmailJS:', error);
+        return false;
+      }
+    }
+
+    // Validation sécurisée des données du formulaire
+    function validateForm(formData) {
+      const errors = [];
+
+      // Vérification des champs requis
+      if (!formData.nom || formData.nom.trim().length < 2) {
+        errors.push('Le nom doit contenir au moins 2 caractères');
+      }
+
+      if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        errors.push('Adresse email invalide');
+      }
+
+      if (!formData.message || formData.message.trim().length < 10) {
+        errors.push('Le message doit contenir au moins 10 caractères');
+      }
+
+      // Vérification longueur maximale
+      if (formData.message && formData.message.length > 2000) {
+        errors.push('Le message est trop long (max 2000 caractères)');
+      }
+
+      return errors;
+    }
+
+    // Nettoyage des données pour éviter les injections
+    function sanitizeInput(input) {
+      if (typeof input !== 'string') return input;
+
+      return input
+        .trim()
+        .replace(/[<>]/g, '') // Supprimer les caractères HTML dangereux
+        .slice(0, 1000); // Limiter la longueur
+    }
+
+    // Gestionnaire de formulaire sécurisé
+    async function handleFormSubmission(formData) {
+      try {
+        // Validation
+        const validationErrors = validateForm(formData);
+        if (validationErrors.length > 0) {
+          showNotification('Erreurs de validation:\n' + validationErrors.join('\n'), 'error');
+          return false;
+        }
+
+        // Nettoyage des données
+        const sanitizedData = {
+          nom: sanitizeInput(formData.nom),
+          prenom: sanitizeInput(formData.prenom || ''),
+          email: sanitizeInput(formData.email),
+          telephone: sanitizeInput(formData.telephone || ''),
+          prestation: sanitizeInput(formData.prestation || ''),
+          objet: sanitizeInput(formData.objet || ''),
+          message: sanitizeInput(formData.message),
+          date: new Date().toLocaleString('fr-FR')
+        };
+
+        // Tentative EmailJS
+        const emailjsInitialized = await initEmailJS();
+
+        if (emailjsInitialized && EMAILJS_CONFIG.PUBLIC_KEY !== 'temp_key') {
+          try {
+            const result = await emailjs.send(
+              EMAILJS_CONFIG.SERVICE_ID,
+              EMAILJS_CONFIG.TEMPLATE_ID,
+              sanitizedData
+            );
+
+            if (result.status === 200) {
+              showNotification('Message envoyé avec succès !', 'success');
+              return true;
+            }
+          } catch (emailjsError) {
+            console.error('Erreur EmailJS:', emailjsError);
+          }
+        }
+
+        // Fallback vers mailto sécurisé
+        return sendViaMailto(sanitizedData);
+
+      } catch (error) {
+        console.error('Erreur formulaire:', error);
+        showNotification('Erreur lors de l\'envoi du message', 'error');
+        return false;
+      }
+    }
+
+    // Envoi sécurisé via mailto
+    function sendViaMailto(data) {
+      try {
+        const subject = `🔧 ${data.prestation || 'Service'} - ${data.nom} ${data.prenom}`.slice(0, 100);
+        const body = `🔔 NOUVEAU MESSAGE CLIENT
+
+👤 INFORMATIONS :
+Nom: ${data.nom}
+Prénom: ${data.prenom}
+Email: ${data.email}
+Téléphone: ${data.telephone}
+
+💼 SERVICE :
+${data.prestation}
+
+📝 MESSAGE :
+${data.message}
+
+---
+✉️  Message envoyé depuis ayoub-informatique
+📅 ${data.date}
+        `.trim();
+
+        const mailtoUrl = `mailto:${EMAILJS_CONFIG.FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoUrl;
+        showNotification('Client email ouvert', 'success');
+        return true;
+
+      } catch (error) {
+        console.error('Erreur mailto:', error);
+        showNotification('Erreur lors de l\'ouverture du client email', 'error');
+        return false;
+      }
+    }
+
+    // Notifications sécurisées
+    function showNotification(message, type = 'info') {
+      // Supprimer les notifications existantes
+      const existingNotifications = document.querySelectorAll('.site-notification');
+      existingNotifications.forEach(notif => notif.remove());
+
+      const notification = document.createElement('div');
+      notification.className = `site-notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <span class="notification-icon">${getNotificationIcon(type)}</span>
+          <span class="notification-message">${escapeHtml(message)}</span>
+        </div>
+      `;
+
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${getNotificationColor(type)};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        max-width: 400px;
+        word-wrap: break-word;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-family: system-ui, -apple-system, sans-serif;
+      `;
+
+      document.body.appendChild(notification);
+
+      // Animation d'entrée
+      setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+
+      // Disparition automatique
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 5000);
+
+      return notification;
+    }
+
+    function getNotificationIcon(type) {
+      const icons = {
+        success: '✅',
+        error: '❌',
+        warning: '⚠️',
+        info: 'ℹ️'
+      };
+      return icons[type] || icons.info;
+    }
+
+    function getNotificationColor(type) {
+      const colors = {
+        success: '#10b981',
+        error: '#ef4444',
+        warning: '#f59e0b',
+        info: '#3b82f6'
+      };
+      return colors[type] || colors.info;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
     // Correction pour les noms de domaine GitHub Pages
     document.addEventListener('DOMContentLoaded', function() {

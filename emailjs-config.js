@@ -1,41 +1,67 @@
 /**
- * Configuration EmailJS
- * Remplacez les valeurs par vos propres clés EmailJS
+ * Configuration EmailJS sécurisée
+ * ⚠️ CRÉEZ UN FICHIER .env AVEC VOS VRAIES CLÉS ⚠️
  */
 const EMAILJS_CONFIG = {
-  // Clés EmailJS (à remplacer par vos vraies clés)
-  SERVICE_ID: 'your_service_id', // Ex: 'service_abc123'
-  TEMPLATE_ID: 'your_template_id', // Ex: 'template_xyz789'
-  PUBLIC_KEY: 'your_public_key', // Ex: 'user_1234567890abcdef'
+  // ⚠️ CES VALEURS SONT TEMPORAIRES - REMPLACEZ-LES ⚠️
+  SERVICE_ID: 'service_temp', // À remplacer par votre vrai SERVICE_ID
+  TEMPLATE_ID: 'template_temp', // À remplacer par votre vrai TEMPLATE_ID
+  PUBLIC_KEY: 'temp_key', // À remplacer par votre vraie PUBLIC_KEY
 
-  // Configuration de secours
+  // Configuration de secours (votre email professionnel)
   FALLBACK_EMAIL: 'proayoubfarkh@gmail.com',
-  FALLBACK_SUBJECT: 'Nouveau message depuis le site web',
+  FALLBACK_SUBJECT: 'Nouveau message client - Ayoub Informatique',
 
-  // Paramètres avancés
-  RETRY_ATTEMPTS: 3,
-  RETRY_DELAY: 1000, // ms
+  // Paramètres de sécurité
+  RETRY_ATTEMPTS: 2,
+  RETRY_DELAY: 800,
+  TIMEOUT: 10000, // 10 secondes timeout
 
-  // Templates de secours pour mailto
+  // Rate limiting (anti-spam)
+  RATE_LIMIT: {
+    MAX_REQUESTS: 5, // Max 5 emails par minute
+    WINDOW_MS: 60000 // Fenêtre de 1 minute
+  },
+
+  // Templates sécurisés pour mailto
   MAILTO_TEMPLATES: {
     contact: {
-      subject: 'Demande - {service} - {nom} {prenom}',
-      body: `Nouveau message depuis le formulaire de contact
+      subject: '🔧 {prestation} - {nom} {prenom} - Ayoub Informatique',
+      body: `🔔 NOUVEAU MESSAGE CLIENT
 
+👤 INFORMATIONS CLIENT :
 Nom: {nom}
 Prénom: {prenom}
 Email: {email}
 Téléphone: {telephone}
-Prestation: {prestation}
+
+💼 PRESTATION DEMANDÉE :
+Service: {prestation}
 Objet: {objet}
 
-Message:
+📝 MESSAGE :
 {message}
 
 ---
-Ce message a été envoyé depuis le site web.
+✉️  Ce message a été envoyé depuis votre site web professionnel
+📅 Date: {date}
+🌐 Site: ayoub-informatique
       `.trim()
     }
+  },
+
+  // Validation des données
+  VALIDATION: {
+    REQUIRED_FIELDS: ['nom', 'email', 'message'],
+    MAX_LENGTH: {
+      nom: 50,
+      prenom: 50,
+      email: 100,
+      telephone: 20,
+      objet: 200,
+      message: 2000
+    },
+    EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   }
 };
 
