@@ -426,10 +426,7 @@ ${fields.message?.value || ''}`;
     const mailtoLink = $('#mailto-fallback');
     const whatsappLink = $('#whatsapp-fallback');
 
-    if (mailtoLink) {
-      const mailtoHref = `mailto:proayoubfarkh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      mailtoLink.setAttribute('href', mailtoHref);
-    }
+    // ⚠️ Plus de mailto - EmailJS uniquement
 
     if (whatsappLink) {
       const whatsappText = `Bonjour, je souhaite une prestation ${fields.prestation?.value || 'informatique'}. ${fields.message?.value || ''}`;

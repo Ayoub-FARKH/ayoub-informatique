@@ -145,11 +145,8 @@ class EmailManager {
     try {
       let result;
 
-      if (useEmailJS) {
-        result = await this.sendViaEmailJS(formData);
-      } else {
-        result = await this.sendViaMailto(formData);
-      }
+      // EmailJS uniquement - plus de mailto
+      result = await this.sendViaEmailJS(formData);
 
       if (showNotifications && result.success) {
         this.showNotification('Email envoyé avec succès!', 'success');
@@ -188,33 +185,7 @@ class EmailManager {
     });
   }
 
-  // Envoi via mailto (fallback)
-  async sendViaMailto(formData) {
-    const subject = `Demande - ${formData.prestation} - ${formData.prenom} ${formData.nom}`;
-    const body = `
-Nouveau message depuis le formulaire de contact
-
-Nom: ${formData.nom}
-Prénom: ${formData.prenom}
-Email: ${formData.email}
-Téléphone: ${formData.telephone}
-Prestation: ${formData.prestation}
-Objet: ${formData.objet}
-
-Message:
-${formData.message}
-
----
-Ce message a été envoyé depuis le site web.
-    `.trim();
-
-    const mailtoUrl = `mailto:proayoubfarkh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    // Ouvrir le client email
-    window.location.href = mailtoUrl;
-
-    return { success: true, method: 'mailto' };
-  }
+  // ⚠️ Plus de mailto - EmailJS uniquement
 
   // Afficher une notification
   showNotification(message, type = 'info') {
