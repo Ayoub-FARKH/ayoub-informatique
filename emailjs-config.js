@@ -45,7 +45,7 @@ Objet: {objet}
 ---
 ✉️  Ce message a été envoyé depuis votre site web professionnel
 📅 Date: {date}
-🌐 Site: ayoub-informatique
+🌐 Site: ayoub-informatique.netlify.app
       `.trim()
     }
   },

@@ -1,7 +1,7 @@
 # 🚀 Ayoub Informatique - Services Professionnels
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://Ayoub-FARKH.github.io/ayoub-informatique/)
-[![Netlify](https://img.shields.io/badge/Netlify-Deployed-blue)](https://eclectic-mermaid-4f0650.netlify.app)
+[![Netlify](https://img.shields.io/badge/Netlify-Live-blue)](https://ayoub-informatique.netlify.app)
 
 ## 🌟 Présentation
 
@@ -71,7 +71,7 @@
 
 Ce site est déployé sur :
 - **GitHub Pages** : https://Ayoub-FARKH.github.io/ayoub-informatique/
-- **Netlify** : https://eclectic-mermaid-4f0650.netlify.app
+- **Netlify** : https://ayoub-informatique.netlify.app
 
 ## 📝 Licence
 
