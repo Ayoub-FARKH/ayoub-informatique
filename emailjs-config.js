@@ -3,10 +3,10 @@
  * ⚠️ CRÉEZ UN FICHIER .env AVEC VOS VRAIES CLÉS ⚠️
  */
 const EMAILJS_CONFIG = {
-  // ⚠️ CES VALEURS SONT TEMPORAIRES - REMPLACEZ-LES ⚠️
-  SERVICE_ID: 'service_temp', // À remplacer par votre vrai SERVICE_ID
-  TEMPLATE_ID: 'template_temp', // À remplacer par votre vrai TEMPLATE_ID
-  PUBLIC_KEY: 'temp_key', // À remplacer par votre vraie PUBLIC_KEY
+  // ✅ Configuration EmailJS - Ayoub Informatique
+  SERVICE_ID: 'service_tckekpc', // Votre service EmailJS
+  TEMPLATE_ID: 'service_tckekpc', // Votre template EmailJS
+  PUBLIC_KEY: 'jQk6uZum97YcxU7p-', // Votre clé publique EmailJS
 
   // Configuration de secours (votre email professionnel)
   FALLBACK_EMAIL: 'proayoubfarkh@gmail.com',
@@ -94,8 +94,8 @@ class EmailJSManager {
 
     try {
       // Vérifier si les clés sont configurées
-      if (EMAILJS_CONFIG.SERVICE_ID === 'your_service_id') {
-        console.warn('⚠️ EmailJS n\'est pas configuré. Utilisation du mode secours uniquement.');
+      if (EMAILJS_CONFIG.SERVICE_ID === 'service_temp' || EMAILJS_CONFIG.PUBLIC_KEY === 'temp_key') {
+        console.warn('⚠️ EmailJS n\'est pas configuré avec vos vraies clés. Utilisation du mode secours uniquement.');
         return false;
       }
 
@@ -132,8 +132,8 @@ class EmailJSManager {
 
       console.log('📧 Tentative d\'envoi via EmailJS...');
 
-      // Simulation de l'appel EmailJS (à remplacer par le vrai appel)
-      const result = await this.simulateEmailJSSend(templateParams);
+      // Vrai appel EmailJS avec vos clés
+      const result = await this.sendRealEmailJS(templateParams);
 
       if (showSuccess) {
         this.showMessage('Message envoyé avec succès !', 'success');
@@ -163,20 +163,26 @@ class EmailJSManager {
   }
 
   /**
-   * Simulation de l'envoi EmailJS (à remplacer par le vrai code)
+   * Envoi réel via EmailJS
    */
-  simulateEmailJSSend(templateParams) {
-    return new Promise((resolve, reject) => {
-      // Simulation d'un délai réseau
-      setTimeout(() => {
-        // 90% de succès pour la démo
-        if (Math.random() > 0.1) {
-          resolve({ status: 200, text: 'OK' });
-        } else {
-          reject(new Error('Erreur de serveur'));
-        }
-      }, 1000);
-    });
+  async sendRealEmailJS(templateParams) {
+    try {
+      // Utilise les vraies clés configurées
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams
+      );
+
+      if (result.status === 200) {
+        return result;
+      } else {
+        throw new Error(`Erreur HTTP ${result.status}`);
+      }
+    } catch (error) {
+      console.error('Erreur EmailJS réel:', error);
+      throw error;
+    }
   }
 
   /**
