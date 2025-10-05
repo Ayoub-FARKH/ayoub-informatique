@@ -5,7 +5,7 @@
 const EMAILJS_CONFIG = {
   // ✅ Configuration EmailJS - Ayoub Informatique
   SERVICE_ID: 'service_tckekpc', // Votre service EmailJS
-  TEMPLATE_ID: 'service_tckekpc', // Votre template EmailJS
+  TEMPLATE_ID: 'template_y3w1ubf', // Votre vrai template EmailJS
   PUBLIC_KEY: 'jQk6uZum97YcxU7p-', // Votre clé publique EmailJS
 
   // Configuration de secours (votre email professionnel)
