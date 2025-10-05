@@ -1047,6 +1047,10 @@
         console.log('TEMPLATE ID:', EMAILJS_CONFIG.TEMPLATE_ID);
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('Données à envoyer:', sanitizedData);
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+        // Tentative EmailJS avec vos vraies clés
+        console.log('🚀 Tentative EmailJS avec vos vraies clés...');
 
         try {
           const result = await emailjs.send(
@@ -1062,7 +1066,8 @@
           }
         } catch (emailjsError) {
           console.error('❌ Erreur EmailJS:', emailjsError);
-          showNotification('Erreur EmailJS: ' + emailjsError.text, 'error');
+          console.log('🔍 Détails erreur:', emailjsError.text || emailjsError.message);
+          showNotification('Erreur EmailJS: ' + (emailjsError.text || emailjsError.message), 'error');
         }
 
         // Fallback vers mailto sécurisé
