@@ -1039,11 +1039,14 @@
           date: new Date().toLocaleString('fr-FR')
         };
 
-        // FORÇAGE EmailJS avec vos vraies clés
-        console.log('🔧 FORÇAGE EmailJS avec vos vraies clés:');
-        console.log('- PUBLIC KEY:', EMAILJS_CONFIG.PUBLIC_KEY);
-        console.log('- SERVICE ID:', EMAILJS_CONFIG.SERVICE_ID);
-        console.log('- TEMPLATE ID:', EMAILJS_CONFIG.TEMPLATE_ID);
+        // DIAGNOSTIC EmailJS complet
+        console.log('🔍 DIAGNOSTIC EmailJS COMPLET:');
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('PUBLIC KEY:', EMAILJS_CONFIG.PUBLIC_KEY);
+        console.log('SERVICE ID:', EMAILJS_CONFIG.SERVICE_ID);
+        console.log('TEMPLATE ID:', EMAILJS_CONFIG.TEMPLATE_ID);
+        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.log('Données à envoyer:', sanitizedData);
 
         try {
           const result = await emailjs.send(
