@@ -482,3 +482,51 @@ ${fields.message?.value || ''}`;
   form.addEventListener('input', updateFallbacks);
   updateFallbacks();
 })();
+
+// Navigation mobile qui disparaît au scroll
+(function mobileNavScroll() {
+  const nav = $('.main-nav');
+  if (!nav) return;
+
+  let lastScrollTop = 0;
+  let scrollTimeout;
+
+  function handleScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Seulement sur mobile
+    if (window.innerWidth <= 768) {
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scroll vers le bas - cacher la navigation
+        nav.classList.add('hidden');
+      } else {
+        // Scroll vers le haut - montrer la navigation
+        nav.classList.remove('hidden');
+      }
+    } else {
+      // Sur desktop, toujours visible
+      nav.classList.remove('hidden');
+    }
+
+    lastScrollTop = scrollTop;
+
+    // Clear le timeout précédent
+    clearTimeout(scrollTimeout);
+    // Remettre la navigation visible après 3 secondes d'inactivité
+    scrollTimeout = setTimeout(() => {
+      nav.classList.remove('hidden');
+    }, 3000);
+  }
+
+  // Écouter le scroll
+  window.addEventListener('scroll', handleScroll);
+
+  // Remettre la navigation visible au redimensionnement
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      nav.classList.remove('hidden');
+    }
+  });
+
+  console.log('📱 Navigation mobile avec scroll activée');
+})();
