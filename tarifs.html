@@ -1039,25 +1039,27 @@
           date: new Date().toLocaleString('fr-FR')
         };
 
-        // Tentative EmailJS avec vos vraies clés
-        const emailjsInitialized = await initEmailJS();
+        // FORÇAGE EmailJS avec vos vraies clés
+        console.log('🔧 FORÇAGE EmailJS avec vos vraies clés:');
+        console.log('- PUBLIC KEY:', EMAILJS_CONFIG.PUBLIC_KEY);
+        console.log('- SERVICE ID:', EMAILJS_CONFIG.SERVICE_ID);
+        console.log('- TEMPLATE ID:', EMAILJS_CONFIG.TEMPLATE_ID);
 
-        if (emailjsInitialized) {
-          try {
-            const result = await emailjs.send(
-              EMAILJS_CONFIG.SERVICE_ID,
-              EMAILJS_CONFIG.TEMPLATE_ID,
-              sanitizedData
-            );
+        try {
+          const result = await emailjs.send(
+            EMAILJS_CONFIG.SERVICE_ID,
+            EMAILJS_CONFIG.TEMPLATE_ID,
+            sanitizedData
+          );
 
-            if (result.status === 200) {
-              showNotification('Message envoyé avec succès !', 'success');
-              return true;
-            }
-          } catch (emailjsError) {
-            console.error('Erreur EmailJS:', emailjsError);
-            showNotification('Erreur EmailJS, utilisation du fallback', 'warning');
+          console.log('✅ EmailJS succès:', result);
+          if (result.status === 200) {
+            showNotification('Message envoyé avec succès via EmailJS !', 'success');
+            return true;
           }
+        } catch (emailjsError) {
+          console.error('❌ Erreur EmailJS:', emailjsError);
+          showNotification('Erreur EmailJS: ' + emailjsError.text, 'error');
         }
 
         // Fallback vers mailto sécurisé
