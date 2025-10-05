@@ -34,38 +34,59 @@ class VisualEffects {
     particlesContainer.appendChild(fragment);
   }
 
-  // Compteurs animés
+  // Compteurs animés STABLES
   initCounters() {
     const counters = $$('.stat-counter');
+    let animationsRunning = new Set(); // Éviter les animations multiples
 
     const animateCounter = (counter) => {
-      const target = parseInt(counter.dataset.target);
-      const duration = 2000;
-      const increment = target / (duration / 16);
+      // Éviter les animations multiples sur le même élément
+      if (animationsRunning.has(counter)) return;
+      animationsRunning.add(counter);
+
+      const target = parseInt(counter.dataset.target) || 0;
+      const duration = 1500; // Plus rapide et stable
+      const fps = 60;
+      const totalFrames = (duration / 1000) * fps;
+      const increment = target / totalFrames;
       let current = 0;
+      let frame = 0;
 
       const timer = setInterval(() => {
+        frame++;
         current += increment;
-        counter.textContent = Math.floor(current);
 
-        if (current >= target) {
+        // Animation plus fluide avec easing
+        const progress = frame / totalFrames;
+        const easedProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+        const easedValue = Math.floor(target * easedProgress);
+
+        counter.textContent = easedValue;
+
+        if (frame >= totalFrames) {
           counter.textContent = target;
           clearInterval(timer);
+          animationsRunning.delete(counter);
         }
-      }, 16);
+      }, 1000 / fps);
     };
 
     // Observer pour déclencher l'animation quand visible
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
+        if (entry.isIntersecting && !animationsRunning.has(entry.target)) {
+          // Délai pour éviter les déclenchements multiples
+          setTimeout(() => animateCounter(entry.target), 100);
           counterObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
-    counters.forEach(counter => counterObserver.observe(counter));
+    counters.forEach(counter => {
+      if (counter.dataset.target) {
+        counterObserver.observe(counter);
+      }
+    });
   }
 
   // Toggle thème sombre/clair
